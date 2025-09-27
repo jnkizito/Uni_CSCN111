@@ -20,7 +20,7 @@ double calcTotalAmount(double itemPrice, int itemAmount){
 double calcTaxedTotal(double total, double taxPercentage){
         double taxedTotal = static_cast<double>(total);
         //Casting to make sure output is a double. Might be overkill honestly.
-        taxedTotal -= taxedTotal * taxPercentage;
+        taxedTotal += taxedTotal * taxPercentage;
 
         return taxedTotal;
 }

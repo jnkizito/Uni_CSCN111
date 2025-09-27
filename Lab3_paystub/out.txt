@@ -1,0 +1,12 @@
+--------------------
+thomas net pay per check: $1423.73
+Monthly Salary: $2847.46
+Annual Net Salary: $34169.5
+--------------------
+anne net pay per check: $1633.75
+Monthly Salary: $3267.5
+Annual Net Salary: $39210
+--------------------
+george net pay per check: $1318.71
+Monthly Salary: $2637.43
+Annual Net Salary: $31649.1
