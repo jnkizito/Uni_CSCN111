@@ -5,6 +5,40 @@
 #include <string>
 using namespace std;
 
+// function to generate final invoice
+// function to calculate subtotal
+
+double calcSubTotal(double itemPrice, int itemMultiplier){
+        double subTotal = itemPrice * itemMultiplier;
+        return subTotal;
+}
+
+
+void genFinalInvoice(string itemName, double itemPrice, int multiplier, double shippingCost, double taxRate, double discountRate){
+        double subtotal = 0;
+        subtotal = calcSubTotal(itemPrice, multiplier);
+        double discountAmount = subtotal * (discountRate / 100);
+        double discounted = subtotal - discountAmount;
+        double discountedTotalWithShipping = discounted + shippingCost;
+        double taxAmount = discountedTotalWithShipping * taxRate;
+        double taxedSubtotal = discountedTotalWithShipping + taxAmount;
+
+
+        //Now, that calc is done, should be able to just print it all out.
+        cout << "PRODUCT INVOICE\n";
+        cout << "Payable To: Joseph's Wacky Linux Centre\n";
+        cout << "Test Product #001: \n"<< itemName<< "\n";
+        cout << "-------------------------------\n";
+        cout << "Quantity:" << multiplier << "\n";
+        cout << "x price:       $ "<< itemPrice << "\n";
+        cout << "Cost:          $ " << subtotal << "\n";
+        cout << "- discount:    $ " << discountAmount << "\n";
+        cout << "+ shipping:    $ " << shippingCost << "\n";
+        cout << "Subtotal:      $ " << discountedTotalWithShipping << "\n";
+        cout << "+ Tax:         $ " << taxAmount << "\n";
+        cout << "Total:         $ " << taxedSubtotal << "\n";
+}
+
 int main(){
 
         //Bring in the values from the file
@@ -12,7 +46,6 @@ int main(){
 
         string itemName;
         double itemPrice;
-        int itemAmount;
 
         string priceString;
         string amountString;
@@ -23,11 +56,9 @@ int main(){
                 getline(inputFile, amountString);
 
                 itemPrice = stod(priceString);
-                itemAmount = stoi(amountString);
 
                 cout << itemName << endl;
                 cout << itemPrice << endl;
-                cout << itemAmount << endl;
                 
         }
 
@@ -38,9 +69,11 @@ int main(){
         bool multiplierAdded = false;
 
         double subTotal = 0.0;
-        double shippingCost = 0.0;
         double discountRate = 0.0;
         int multiplier = 1;
+
+        double SHIPPING_COST = 10.0;
+        double TAX_RATE = 0.04;
 
 
         while(running){
@@ -59,13 +92,13 @@ int main(){
 
                 //shipping
                 if(userChoice == 'S' && !shippingAdded){
-                        shippingCost = 15.0;
                         shippingAdded = true;
                         cout << "Shipping Cost added" << endl;
                 }
 
                 //check discount
                 if(userChoice == 'D' && !discountAdded){
+                        cout << "Enter a whole number: %: ";
                         cin >> discountRate;
                         discountAdded = true;
                         cout << "Discount added" << endl;
@@ -73,6 +106,7 @@ int main(){
 
                 //check mult 
                 if(userChoice == 'M' && !multiplierAdded){
+                        cout << "Enter a whole number: (ex. 2 for two items) : ";
                         cin >> multiplier;
                         multiplierAdded = true;
                         cout << "Multiplier Added" << endl;
@@ -88,10 +122,7 @@ int main(){
                 }
        }
 
-        // final cost calculation
-        double subtotal = itemPrice * multiplier;
-        double discounted = subtotal - (subtotal * (discountRate / 100));
-        double total = discounted + shippingCost;
+        genFinalInvoice(itemName, itemPrice, multiplier, SHIPPING_COST, TAX_RATE, discountRate);
  
         inputFile.close();
 }
