@@ -1,0 +1,21 @@
+SSH for beginners
+1.50
+Linux networking for beginners
+1.50
+Environment Variables 
+3.0
+Daemons and Services
+3.0
+Linux Networking for beginners
+1.50
+Bash Scripting for beginners
+1.50
+Docker for beginners
+1.50
+Advanced Linux Networking
+6.0
+Advanced SSH
+6.0
+Advanced Bash Scripting
+6.0
+
