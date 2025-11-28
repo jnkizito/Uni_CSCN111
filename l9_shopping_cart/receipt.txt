@@ -1,0 +1,7 @@
+=========== ITEMIZED RECEIPT ===========
+Item                     Qty       Base        Final       Shipping
+Daemons and Services     3         $9.00       $9.00       Yes
+Linux networking for beginners5         $7.50       $7.50       Yes
+Environment Variables    3         $9.00       $9.00       Yes
+
+TOTAL: $80.85
